@@ -94,7 +94,7 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
       </div>
 
       {/* Mobile Android Layout (<sm): Compact edge-to-edge scrollable rail */}
-      <div className="sm:hidden px-3 py-2 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar scrollbar-none">
+      <div className="sm:hidden px-3 py-1.5 flex items-center gap-2 overflow-x-auto no-scrollbar scrollbar-none w-full max-w-full">
         <div className="flex items-center gap-1.5 shrink-0">
           <span className="inline-flex items-center gap-1 rounded bg-teal-500/20 px-2 py-0.5 font-mono text-[9px] font-bold text-teal-300 ring-1 ring-teal-500/30 whitespace-nowrap">
             <span className="h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse shrink-0" />

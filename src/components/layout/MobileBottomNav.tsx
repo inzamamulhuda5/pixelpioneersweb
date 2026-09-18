@@ -73,7 +73,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id as any)}
-              className={`relative flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-all duration-150 min-w-[54px] active:scale-95 cursor-pointer focus:outline-hidden ${
+              className={`relative flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all duration-150 flex-1 min-w-0 max-w-[68px] active:scale-95 cursor-pointer focus:outline-hidden ${
                 isActive ? 'text-teal-700' : 'text-zinc-500 hover:text-zinc-800'
               }`}
             >
@@ -93,7 +93,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 )}
               </div>
               <span
-                className={`text-[10px] mt-1 tracking-tight leading-none ${
+                className={`text-[10px] mt-1 tracking-tight leading-none truncate w-full text-center ${
                   isActive ? 'font-bold text-teal-800' : 'font-medium text-zinc-500'
                 }`}
               >
