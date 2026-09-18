@@ -113,7 +113,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
   const isReadyForAssessment = answeredCount >= 3 || messages.some((m) => m.isCompletePrompt);
 
   return (
-    <div className="flex flex-col h-[calc(100dvh-10rem)] sm:h-[calc(100vh-8.5rem)] max-w-4xl mx-auto w-full px-2 sm:px-4 pb-2 sm:pb-4">
+    <div className="flex flex-col h-[calc(100dvh-10rem)] sm:h-[calc(100vh-8.5rem)] max-w-4xl mx-auto w-full px-2 sm:px-4 pb-2 sm:pb-4 min-w-0">
       {/* Intake Progress & Safety Disclaimer Banner */}
       <div className="mb-2 sm:mb-3 rounded-xl border border-zinc-200 bg-white p-2.5 sm:p-3 shadow-2xs">
         <div className="flex items-center justify-between gap-2">
@@ -287,7 +287,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
       {/* Suggested Quick Replies */}
       {quickReplies.length > 0 && !isLoading && (
-        <div className="mt-1.5 flex items-center gap-1.5 py-1 overflow-x-auto no-scrollbar scrollbar-none flex-nowrap sm:flex-wrap">
+        <div className="mt-1.5 flex items-center gap-1.5 py-1 overflow-x-auto no-scrollbar scrollbar-none flex-nowrap sm:flex-wrap w-full min-w-0">
           <span className="text-[10px] uppercase font-bold text-zinc-400 mr-1 shrink-0">Suggested:</span>
           {quickReplies.map((reply, idx) => (
             <button

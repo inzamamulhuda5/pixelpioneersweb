@@ -219,7 +219,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen min-h-[100dvh] w-full max-w-full overflow-x-hidden bg-zinc-50 text-zinc-900 flex flex-col font-['Plus_Jakarta_Sans'] selection:bg-teal-500 selection:text-white">
+    <div className="min-h-screen min-h-[100dvh] w-full max-w-full bg-zinc-50 text-zinc-900 flex flex-col font-['Plus_Jakarta_Sans'] selection:bg-teal-500 selection:text-white">
       {/* Demo Environment Control Bar */}
       <DemoControlBar
         onLoadScenario={handleLoadDemoScenario}
@@ -239,7 +239,7 @@ export default function App() {
       />
 
       {/* Main View Area */}
-      <main className="flex-1 flex flex-col w-full max-w-full pb-16 lg:pb-0 overflow-x-hidden">
+      <main className="flex-1 flex flex-col w-full max-w-full pb-16 lg:pb-0">
         {/* VIEW 1: HOME */}
         {activeTab === 'home' && (
           <HeroChatComposer

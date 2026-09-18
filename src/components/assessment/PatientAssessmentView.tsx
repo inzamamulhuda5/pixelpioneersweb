@@ -93,7 +93,7 @@ export const PatientAssessmentView: React.FC<PatientAssessmentViewProps> = ({
   });
 
   return (
-    <div className="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
+    <div className="w-full max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6 min-w-0">
       {/* Prominent Medical Safety Boundary Banner */}
       <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-3 sm:p-4 text-xs text-zinc-600 flex items-start gap-2.5 sm:gap-3 shadow-2xs">
         <Shield className="h-4 w-4 text-teal-600 shrink-0 mt-0.5" />
@@ -456,12 +456,12 @@ export const PatientAssessmentView: React.FC<PatientAssessmentViewProps> = ({
 
       {/* "SEE WHY" TRANSPARENT INDICATORS MODAL / DRAWER */}
       {showSeeWhyModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/70 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-2xl border border-zinc-200 max-h-[90vh] flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/70 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl rounded-2xl bg-white p-4 sm:p-6 shadow-2xl border border-zinc-200 max-h-[90vh] flex flex-col min-w-0">
             {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-zinc-100 pb-4">
-              <div>
-                <h3 className="text-lg font-bold text-zinc-900 font-['Space_Grotesk']">
+            <div className="flex items-center justify-between border-b border-zinc-100 pb-3 sm:pb-4 gap-2">
+              <div className="min-w-0">
+                <h3 className="text-base sm:text-lg font-bold text-zinc-900 font-['Space_Grotesk'] truncate">
                   Transparent Clinical Triage Indicators
                 </h3>
                 <p className="text-xs text-zinc-500 mt-0.5">
@@ -470,17 +470,17 @@ export const PatientAssessmentView: React.FC<PatientAssessmentViewProps> = ({
               </div>
               <button
                 onClick={() => setShowSeeWhyModal(false)}
-                className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 transition"
+                className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 transition shrink-0"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             {/* Filter Tabs */}
-            <div className="flex items-center gap-2 mt-4">
+            <div className="flex items-center gap-1.5 sm:gap-2 mt-4 overflow-x-auto no-scrollbar scrollbar-none flex-nowrap sm:flex-wrap pb-1 w-full min-w-0">
               <button
                 onClick={() => setActiveIndicatorFilter('all')}
-                className={`rounded-lg px-3 py-1 text-xs font-semibold transition ${
+                className={`rounded-lg px-3 py-1 text-xs font-semibold transition whitespace-nowrap shrink-0 ${
                   activeIndicatorFilter === 'all'
                     ? 'bg-zinc-900 text-white'
                     : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'

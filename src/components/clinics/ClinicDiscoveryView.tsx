@@ -72,12 +72,12 @@ export const ClinicDiscoveryView: React.FC<ClinicDiscoveryViewProps> = ({
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6">
+    <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 min-w-0">
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-zinc-200 pb-4 sm:pb-5">
-        <div>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-zinc-200 pb-4 sm:pb-5 min-w-0">
+        <div className="min-w-0">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
-            <Building2 className="h-4 w-4" />
+            <Building2 className="h-4 w-4 shrink-0" />
             <span>Healthcare Facility Network</span>
           </div>
           <h1 className="text-xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk'] mt-1">
@@ -89,7 +89,7 @@ export const ClinicDiscoveryView: React.FC<ClinicDiscoveryViewProps> = ({
         </div>
 
         {/* City Switcher */}
-        <div className="flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-3 py-2 shadow-2xs self-start sm:self-auto min-h-[38px]">
+        <div className="flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-3 py-2 shadow-2xs self-start sm:self-auto min-h-[38px] shrink-0">
           <MapPin className="h-4 w-4 text-teal-600 shrink-0" />
           <span className="text-xs font-bold text-zinc-700">City:</span>
           <select
@@ -107,9 +107,9 @@ export const ClinicDiscoveryView: React.FC<ClinicDiscoveryViewProps> = ({
       </div>
 
       {/* Search & Filter Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 w-full min-w-0">
         {/* Search bar */}
-        <div className="relative flex-1 max-w-md w-full">
+        <div className="relative flex-1 max-w-md w-full min-w-0">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
           <input
             type="text"
@@ -121,62 +121,64 @@ export const ClinicDiscoveryView: React.FC<ClinicDiscoveryViewProps> = ({
         </div>
 
         {/* Specialty Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scrollbar-none flex-nowrap sm:flex-wrap pb-1 w-full sm:w-auto">
-          <button
-            onClick={() => setSelectedSpecialty('All')}
-            className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer whitespace-nowrap shrink-0 active:scale-95 ${
-              selectedSpecialty === 'All'
-                ? 'bg-zinc-900 text-white'
-                : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
-            }`}
-          >
-            All
-          </button>
-          {ALL_SPECIALTIES.map((spec) => {
-            const isMatch = selectedSpecialty.toLowerCase() === spec.toLowerCase();
-            return (
-              <button
-                key={spec}
-                onClick={() => setSelectedSpecialty(spec)}
-                className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer whitespace-nowrap shrink-0 active:scale-95 ${
-                  isMatch
-                    ? 'bg-teal-600 text-white'
-                    : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
-                }`}
-              >
-                {spec}
-              </button>
-            );
-          })}
+        <div className="w-full sm:w-auto min-w-0 overflow-x-auto no-scrollbar scrollbar-none pb-1">
+          <div className="flex items-center gap-1.5 flex-nowrap sm:flex-wrap w-max sm:w-auto">
+            <button
+              onClick={() => setSelectedSpecialty('All')}
+              className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer whitespace-nowrap shrink-0 active:scale-95 ${
+                selectedSpecialty === 'All'
+                  ? 'bg-zinc-900 text-white'
+                  : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
+              }`}
+            >
+              All
+            </button>
+            {ALL_SPECIALTIES.map((spec) => {
+              const isMatch = selectedSpecialty.toLowerCase() === spec.toLowerCase();
+              return (
+                <button
+                  key={spec}
+                  onClick={() => setSelectedSpecialty(spec)}
+                  className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer whitespace-nowrap shrink-0 active:scale-95 ${
+                    isMatch
+                      ? 'bg-teal-600 text-white'
+                      : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
+                  }`}
+                >
+                  {spec}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       {/* Clinics Grid */}
       {filteredClinics.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 w-full min-w-0">
           {filteredClinics.map((clinic) => (
             <div
               key={clinic.id}
-              className="flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-5 shadow-2xs transition hover:border-teal-400 hover:shadow-md"
+              className="flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-4 sm:p-5 shadow-2xs transition hover:border-teal-400 hover:shadow-md w-full min-w-0"
             >
-              <div>
+              <div className="min-w-0">
                 {/* Top Badges */}
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between gap-1 mb-3 flex-wrap">
                   <span className="inline-flex items-center gap-1 rounded-full bg-teal-50 px-2.5 py-0.5 text-[11px] font-bold text-teal-800 ring-1 ring-teal-600/20">
-                    <Stethoscope className="h-3 w-3 text-teal-600" />
-                    {clinic.primarySpecialty || clinic.specialties[0]}
+                    <Stethoscope className="h-3 w-3 text-teal-600 shrink-0" />
+                    <span className="truncate">{clinic.primarySpecialty || clinic.specialties[0]}</span>
                   </span>
 
                   {(clinic.emergencyCapable || clinic.emergencyCareAvailable) && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-bold text-rose-700 ring-1 ring-rose-500/20">
-                      <AlertOctagon className="h-3 w-3 text-rose-600" />
+                    <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-bold text-rose-700 ring-1 ring-rose-500/20 shrink-0">
+                      <AlertOctagon className="h-3 w-3 text-rose-600 shrink-0" />
                       24/7 Emergency
                     </span>
                   )}
                 </div>
 
                 {/* Clinic Name & Area */}
-                <h3 className="text-lg font-bold text-zinc-900 font-['Space_Grotesk'] leading-snug">
+                <h3 className="text-base sm:text-lg font-bold text-zinc-900 font-['Space_Grotesk'] leading-snug">
                   {clinic.name}
                 </h3>
                 <div className="mt-1 flex items-center gap-1.5 text-xs text-zinc-500">
@@ -192,50 +194,50 @@ export const ClinicDiscoveryView: React.FC<ClinicDiscoveryViewProps> = ({
                 </p>
 
                 {/* Key Metrics */}
-                <div className="mt-4 grid grid-cols-2 gap-2 rounded-xl bg-zinc-50 p-2.5 text-xs">
-                  <div>
+                <div className="mt-4 grid grid-cols-2 gap-2 rounded-xl bg-zinc-50 p-2.5 text-xs min-w-0">
+                  <div className="min-w-0">
                     <span className="text-[10px] uppercase font-bold text-zinc-400 block">
                       Consultation Fee
                     </span>
-                    <span className="font-bold text-zinc-900">
+                    <span className="font-bold text-zinc-900 whitespace-nowrap text-[11px] sm:text-xs">
                       INR {clinic.consultationFeeRange.min} - {clinic.consultationFeeRange.max}
                     </span>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <span className="text-[10px] uppercase font-bold text-zinc-400 block">
                       Next Available
                     </span>
-                    <span className="font-bold text-teal-700 flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      {clinic.nextAvailableSlot}
+                    <span className="font-bold text-teal-700 flex items-center gap-1 whitespace-nowrap text-[11px] sm:text-xs">
+                      <Calendar className="h-3 w-3 shrink-0" />
+                      <span className="truncate">{clinic.nextAvailableSlot}</span>
                     </span>
                   </div>
                 </div>
 
                 {/* Doctor Count & Operating Hours */}
-                <div className="mt-3 flex items-center justify-between text-[11px] text-zinc-500">
+                <div className="mt-3 flex items-center justify-between gap-1 text-[11px] text-zinc-500 flex-wrap min-w-0">
                   <span className="flex items-center gap-1">
-                    <Users className="h-3.5 w-3.5 text-zinc-400" />
-                    {clinic.doctorCount} Doctors on panel
+                    <Users className="h-3.5 w-3.5 text-zinc-400 shrink-0" />
+                    <span>{clinic.doctorCount} Doctors on panel</span>
                   </span>
                   <span className="flex items-center gap-1">
-                    <Clock className="h-3.5 w-3.5 text-zinc-400" />
-                    {clinic.operatingHours || '08:00 AM - 08:00 PM'}
+                    <Clock className="h-3.5 w-3.5 text-zinc-400 shrink-0" />
+                    <span>{clinic.operatingHours || '08:00 AM - 08:00 PM'}</span>
                   </span>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-5 pt-3 border-t border-zinc-100 flex items-center gap-2">
+              <div className="mt-5 pt-3 border-t border-zinc-100 flex items-center gap-2 min-w-0">
                 <button
                   onClick={() => onSelectDoctorForClinic(clinic)}
-                  className="flex-1 rounded-xl bg-zinc-900 py-2 text-xs font-bold text-white hover:bg-zinc-800 transition text-center cursor-pointer"
+                  className="flex-1 rounded-xl bg-zinc-900 py-2 px-3 text-xs font-bold text-white hover:bg-zinc-800 transition text-center cursor-pointer min-w-0 truncate"
                 >
                   View Doctors ({clinic.doctorCount})
                 </button>
                 <button
                   onClick={() => onSelectClinic(clinic)}
-                  className="flex items-center justify-center rounded-xl bg-teal-50 border border-teal-200 px-3 py-2 text-xs font-bold text-teal-800 hover:bg-teal-100 transition cursor-pointer"
+                  className="flex items-center justify-center rounded-xl bg-teal-50 border border-teal-200 px-3 py-2 text-xs font-bold text-teal-800 hover:bg-teal-100 transition cursor-pointer shrink-0"
                   title="Book directly at this clinic"
                 >
                   <ArrowRight className="h-4 w-4" />

@@ -6,14 +6,12 @@ html {
   -moz-text-size-adjust: 100% !important;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
   touch-action: manipulation;
 }
 
 body {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
   -webkit-text-size-adjust: 100% !important;
@@ -24,7 +22,6 @@ body {
 #root {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;

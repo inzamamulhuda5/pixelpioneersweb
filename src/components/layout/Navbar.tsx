@@ -49,12 +49,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-zinc-200 bg-white/95 backdrop-blur-md">
-      <div className="mx-auto flex h-16 lg:h-20 max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8 gap-2 sm:gap-4">
+      <div className="mx-auto flex h-16 lg:h-20 max-w-7xl items-center justify-between px-2.5 sm:px-6 lg:px-8 gap-1.5 sm:gap-4">
         {/* Zone 1: Brand Logo & Tagline */}
-        <div className="flex items-center shrink min-w-0">
+        <div className="flex items-center shrink-0">
           <button
             onClick={() => setActiveTab('home')}
-            className="flex items-center gap-2 sm:gap-3 text-left transition-opacity hover:opacity-90 cursor-pointer min-w-0"
+            className="flex items-center gap-2 sm:gap-3 text-left transition-opacity hover:opacity-90 cursor-pointer"
           >
             <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-zinc-900 shadow-xs shrink-0">
               <div className="grid grid-cols-2 gap-0.5 sm:gap-1">
@@ -64,11 +64,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-xs bg-emerald-400" />
               </div>
             </div>
-            <div className="flex flex-col justify-center min-w-0">
-              <span className="font-bold tracking-tight text-zinc-900 text-sm sm:text-lg font-['Space_Grotesk'] leading-tight truncate">
+            <div className="flex flex-col justify-center">
+              <span className="font-bold tracking-tight text-zinc-900 text-sm sm:text-lg font-['Space_Grotesk'] leading-tight whitespace-nowrap">
                 PIXEL PIONEERS
               </span>
-              <p className="text-[10px] sm:text-[11px] text-zinc-500 whitespace-nowrap tracking-tight leading-none mt-0.5 hidden xs:block">
+              <p className="text-[10px] sm:text-[11px] text-zinc-500 whitespace-nowrap tracking-tight leading-none mt-0.5 hidden sm:block">
                 Intake &bull; Triage &bull; Clinic Coordination
               </p>
             </div>
@@ -135,12 +135,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Mobile / Tablet Controls (under lg breakpoint) */}
         <div className="flex items-center gap-1 sm:gap-2 lg:hidden shrink-0">
-          <div className="flex items-center gap-1 rounded-lg border border-zinc-200 bg-zinc-50 px-1.5 sm:px-2 py-1 sm:py-1.5 text-xs text-zinc-800 min-h-[34px] sm:min-h-[36px]">
+          <div className="flex items-center gap-1 rounded-lg border border-zinc-200 bg-zinc-50 px-1.5 sm:px-2 py-1 sm:py-1.5 text-xs text-zinc-800 min-h-[32px] sm:min-h-[36px]">
             <MapPin className="h-3 w-3 text-teal-600 shrink-0" />
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value as MetroCity)}
-              className="bg-transparent font-semibold text-zinc-800 focus:outline-hidden cursor-pointer text-xs"
+              className="bg-transparent font-semibold text-zinc-800 focus:outline-hidden cursor-pointer text-xs max-w-[72px] xs:max-w-[85px] sm:max-w-none truncate"
             >
               {METRO_CITIES.map((city) => (
                 <option key={city} value={city}>
@@ -152,7 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={() => setActiveTab('chat')}
-            className="inline-flex items-center gap-1 rounded-lg bg-teal-600 px-2 sm:px-2.5 py-1 sm:py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-teal-700 min-h-[34px] sm:min-h-[36px] active:scale-95 transition cursor-pointer"
+            className="inline-flex items-center gap-1 rounded-lg bg-teal-600 px-2 sm:px-2.5 py-1 sm:py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-teal-700 min-h-[32px] sm:min-h-[36px] active:scale-95 transition cursor-pointer shrink-0"
           >
             <Sparkles className="h-3 w-3 text-teal-200 shrink-0" />
             <span className="whitespace-nowrap">Intake</span>
@@ -161,7 +161,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
-            className="rounded-lg p-1.5 sm:p-2 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition min-h-[34px] min-w-[34px] sm:min-h-[36px] sm:min-w-[36px] flex items-center justify-center cursor-pointer active:scale-95"
+            className="rounded-lg p-1 sm:p-2 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition min-h-[32px] min-w-[32px] sm:min-h-[36px] sm:min-w-[36px] flex items-center justify-center cursor-pointer active:scale-95 shrink-0"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>

@@ -47,7 +47,7 @@ export const HeroChatComposer: React.FC<HeroChatComposerProps> = ({
   };
 
   return (
-    <div className="flex flex-col items-center pt-6 sm:pt-10 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
+    <div className="flex flex-col items-center pt-6 sm:pt-10 pb-16 px-3 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full min-w-0">
       {/* Top AI Capability Badge */}
       <div className="inline-flex items-center gap-2 rounded-full bg-teal-50 px-3.5 py-1.5 border border-teal-200/70 mb-4 sm:mb-6 shadow-2xs text-center max-w-full">
         <Sparkles className="h-3.5 w-3.5 text-teal-600 shrink-0" />

@@ -25,7 +25,7 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
   };
 
   return (
-    <div className="w-full bg-zinc-900 text-white border-b border-zinc-800 text-xs">
+    <div className="w-full max-w-full min-w-0 bg-zinc-900 text-white border-b border-zinc-800 text-xs">
       {/* Desktop & Tablet Layout (sm and up) */}
       <div className="hidden sm:flex mx-auto max-w-7xl px-4 py-2.5 sm:px-6 lg:px-8 flex-wrap lg:flex-nowrap items-center justify-between gap-y-2.5 gap-x-4">
         {/* Badge & Notice */}
@@ -94,7 +94,7 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
       </div>
 
       {/* Mobile Android Layout (<sm): Compact edge-to-edge scrollable rail */}
-      <div className="sm:hidden px-3 py-1.5 flex items-center gap-2 overflow-x-auto no-scrollbar scrollbar-none w-full max-w-full">
+      <div className="sm:hidden px-2.5 py-1.5 flex items-center gap-2 overflow-x-auto no-scrollbar scrollbar-none w-full min-w-0">
         <div className="flex items-center gap-1.5 shrink-0">
           <span className="inline-flex items-center gap-1 rounded bg-teal-500/20 px-2 py-0.5 font-mono text-[9px] font-bold text-teal-300 ring-1 ring-teal-500/30 whitespace-nowrap">
             <span className="h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse shrink-0" />

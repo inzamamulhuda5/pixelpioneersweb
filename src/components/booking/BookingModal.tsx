@@ -394,49 +394,50 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-zinc-950/70 backdrop-blur-xs p-0 sm:p-4 overflow-y-auto">
-      <div className="relative w-full max-w-2xl rounded-t-2xl sm:rounded-2xl bg-white p-4 sm:p-6 shadow-2xl border border-zinc-200 my-0 sm:my-8 max-h-[92dvh] overflow-y-auto">
+      <div className="relative w-full max-w-2xl rounded-t-2xl sm:rounded-2xl bg-white p-4 sm:p-6 shadow-2xl border border-zinc-200 my-0 sm:my-8 max-h-[92dvh] overflow-y-auto min-w-0">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-zinc-100 pb-3 sm:pb-4">
-          <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-between border-b border-zinc-100 pb-3 sm:pb-4 gap-2">
+          <div className="flex items-center gap-2.5 min-w-0">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal-600 text-white shadow-2xs shrink-0">
               <Calendar className="h-5 w-5" />
             </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-bold text-zinc-900 font-['Space_Grotesk']">
+            <div className="min-w-0">
+              <h2 className="text-base sm:text-lg font-bold text-zinc-900 font-['Space_Grotesk'] truncate">
                 Schedule Doctor Consultation
               </h2>
-              <p className="text-[11px] sm:text-xs text-zinc-500">
+              <p className="text-[11px] sm:text-xs text-zinc-500 truncate">
                 Clinic Desk Synchronization &bull; Real-Time Slot Holding
               </p>
             </div>
           </div>
           <button
             onClick={handleClose}
-            className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 transition cursor-pointer"
+            className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 transition cursor-pointer shrink-0"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
         {/* Guided Step Progress Bar */}
-        <div className="mt-4 flex items-center justify-between border-b border-zinc-100 pb-3 text-xs">
+        <div className="mt-3 sm:mt-4 flex items-center justify-between border-b border-zinc-100 pb-2.5 sm:pb-3 text-xs gap-1">
           <button
             type="button"
             onClick={() => setCurrentStep('slots')}
-            className={`flex items-center gap-1.5 font-bold transition ${
+            className={`flex items-center gap-1 sm:gap-1.5 font-bold transition whitespace-nowrap ${
               currentStep === 'slots'
                 ? 'text-teal-700'
                 : 'text-zinc-400 hover:text-zinc-700'
             }`}
           >
             <span
-              className={`flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold ${
+              className={`flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold shrink-0 ${
                 currentStep === 'slots' ? 'bg-teal-600 text-white' : 'bg-zinc-200 text-zinc-700'
               }`}
             >
               1
             </span>
-            <span>1. Select & Hold Slot</span>
+            <span className="hidden sm:inline">1. Select & Hold Slot</span>
+            <span className="sm:hidden">1. Slot</span>
           </button>
 
           <span className="text-zinc-300">&bull;&bull;&bull;</span>
@@ -447,20 +448,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               if (selectedSlot && isHoldActive) setCurrentStep('patient');
             }}
             disabled={!selectedSlot || !isHoldActive}
-            className={`flex items-center gap-1.5 font-bold transition disabled:opacity-40 disabled:cursor-not-allowed ${
+            className={`flex items-center gap-1 sm:gap-1.5 font-bold transition disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap ${
               currentStep === 'patient'
                 ? 'text-teal-700'
                 : 'text-zinc-400 hover:text-zinc-700'
             }`}
           >
             <span
-              className={`flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold ${
+              className={`flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold shrink-0 ${
                 currentStep === 'patient' ? 'bg-teal-600 text-white' : 'bg-zinc-200 text-zinc-700'
               }`}
             >
               2
             </span>
-            <span>2. Patient Details</span>
+            <span className="hidden sm:inline">2. Patient Details</span>
+            <span className="sm:hidden">2. Details</span>
           </button>
 
           <span className="text-zinc-300">&bull;&bull;&bull;</span>
@@ -471,20 +473,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               if (selectedSlot && isHoldActive && validatePatientForm()) setCurrentStep('review');
             }}
             disabled={!selectedSlot || !isHoldActive}
-            className={`flex items-center gap-1.5 font-bold transition disabled:opacity-40 disabled:cursor-not-allowed ${
+            className={`flex items-center gap-1 sm:gap-1.5 font-bold transition disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap ${
               currentStep === 'review'
                 ? 'text-teal-700'
                 : 'text-zinc-400 hover:text-zinc-700'
             }`}
           >
             <span
-              className={`flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold ${
+              className={`flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold shrink-0 ${
                 currentStep === 'review' ? 'bg-teal-600 text-white' : 'bg-zinc-200 text-zinc-700'
               }`}
             >
               3
             </span>
-            <span>3. Review & Pricing</span>
+            <span className="hidden sm:inline">3. Review & Pricing</span>
+            <span className="sm:hidden">3. Review</span>
           </button>
         </div>
 
@@ -552,7 +555,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <span className="text-[11px] text-zinc-400">Next 7 calendar days</span>
               </div>
 
-              <div className="flex items-center gap-2 overflow-x-auto pb-1">
+              <div className="flex items-center gap-2 overflow-x-auto no-scrollbar scrollbar-none pb-1 w-full min-w-0">
                 {dates.map((d, idx) => {
                   const isSelected = selectedDate === d;
                   const dateObj = new Date(d);
