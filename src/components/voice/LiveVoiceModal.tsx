@@ -659,8 +659,8 @@ export const LiveVoiceModal: React.FC<LiveVoiceModalProps> = ({
   const recentMessages = messages.slice(-3);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/90 backdrop-blur-xl p-4 transition-opacity">
-      <div className="relative w-full max-w-lg rounded-3xl bg-zinc-900 p-6 sm:p-7 text-white shadow-2xl border border-zinc-800 flex flex-col items-center justify-between min-h-[580px]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/90 backdrop-blur-xl p-2 sm:p-4 transition-opacity">
+      <div className="relative w-full max-w-lg rounded-3xl bg-zinc-900 p-4 sm:p-7 text-white shadow-2xl border border-zinc-800 flex flex-col items-center justify-between max-h-[96dvh] overflow-y-auto">
         {/* Hidden File Input for Medical Reports */}
         <input
           type="file"

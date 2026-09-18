@@ -70,15 +70,15 @@ export const DoctorListView: React.FC<DoctorListViewProps> = ({
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6">
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-zinc-200 pb-4 sm:pb-5">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
             <Stethoscope className="h-4 w-4" />
             <span>Consulting Physicians</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk'] mt-1">
+          <h1 className="text-xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk'] mt-1">
             Verified Doctors in {selectedCity}
           </h1>
           <p className="text-xs text-zinc-500 mt-1">
@@ -88,11 +88,11 @@ export const DoctorListView: React.FC<DoctorListViewProps> = ({
 
         {/* If clinic filter active, show indicator pill */}
         {selectedClinicFilter && (
-          <div className="flex items-center gap-2 rounded-xl bg-teal-50 border border-teal-200 px-3 py-1.5 text-xs text-teal-900">
+          <div className="flex items-center gap-2 rounded-xl bg-teal-50 border border-teal-200 px-3 py-1.5 text-xs text-teal-900 self-start sm:self-auto">
             <span>Filtered by: <strong>{selectedClinicFilter.name}</strong></span>
             <button
               onClick={onClearClinicFilter}
-              className="rounded-full p-0.5 hover:bg-teal-200/60 transition"
+              className="rounded-full p-1 hover:bg-teal-200/60 transition cursor-pointer"
               title="Clear clinic filter"
             >
               <X className="h-3.5 w-3.5" />
@@ -104,22 +104,22 @@ export const DoctorListView: React.FC<DoctorListViewProps> = ({
       {/* Controls Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         {/* Search */}
-        <div className="relative flex-1 max-w-md">
+        <div className="relative flex-1 max-w-md w-full">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by doctor name or specialty..."
-            className="w-full rounded-xl border border-zinc-200 bg-white pl-10 pr-4 py-2 text-xs sm:text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 focus:outline-hidden shadow-2xs"
+            className="w-full rounded-xl border border-zinc-200 bg-white pl-10 pr-4 py-2.5 sm:py-2 text-base sm:text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 focus:outline-hidden shadow-2xs"
           />
         </div>
 
         {/* Specialty Filter Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 overflow-x-auto pb-1">
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scrollbar-none flex-nowrap sm:flex-wrap pb-1 w-full sm:w-auto">
           <button
             onClick={() => setSelectedSpecialty('All')}
-            className={`rounded-full px-3 py-1 text-xs font-semibold transition cursor-pointer ${
+            className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer whitespace-nowrap shrink-0 active:scale-95 ${
               selectedSpecialty === 'All'
                 ? 'bg-zinc-900 text-white'
                 : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
@@ -133,7 +133,7 @@ export const DoctorListView: React.FC<DoctorListViewProps> = ({
               <button
                 key={spec}
                 onClick={() => setSelectedSpecialty(spec)}
-                className={`rounded-full px-3 py-1 text-xs font-semibold transition cursor-pointer ${
+                className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer whitespace-nowrap shrink-0 active:scale-95 ${
                   isMatch ? 'bg-teal-600 text-white' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
                 }`}
               >

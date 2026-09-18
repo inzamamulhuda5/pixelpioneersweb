@@ -113,34 +113,35 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
   const isReadyForAssessment = answeredCount >= 3 || messages.some((m) => m.isCompletePrompt);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-8.5rem)] max-w-4xl mx-auto w-full px-2 sm:px-4 pb-4">
+    <div className="flex flex-col h-[calc(100dvh-10rem)] sm:h-[calc(100vh-8.5rem)] max-w-4xl mx-auto w-full px-2 sm:px-4 pb-2 sm:pb-4">
       {/* Intake Progress & Safety Disclaimer Banner */}
-      <div className="mb-3 rounded-xl border border-zinc-200 bg-white p-3 shadow-2xs">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <span className="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
-            <span className="text-xs font-bold text-zinc-900 font-['Space_Grotesk']">
-              Structured Clinical Interview
+      <div className="mb-2 sm:mb-3 rounded-xl border border-zinc-200 bg-white p-2.5 sm:p-3 shadow-2xs">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse shrink-0" />
+            <span className="text-xs font-bold text-zinc-900 font-['Space_Grotesk'] truncate">
+              Clinical Intake
             </span>
-            <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-semibold text-teal-700">
-              {answeredCount}/4 Signals Collected
+            <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-semibold text-teal-700 whitespace-nowrap shrink-0">
+              {answeredCount}/4 Signals
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 shrink-0">
             {isReadyForAssessment && (
               <button
                 onClick={onCompleteIntake}
-                className="flex items-center gap-1.5 rounded-lg bg-teal-600 px-3 py-1 text-xs font-bold text-white shadow-2xs hover:bg-teal-700 transition cursor-pointer"
+                className="flex items-center gap-1 rounded-lg bg-teal-600 px-2.5 py-1 text-xs font-bold text-white shadow-2xs hover:bg-teal-700 transition cursor-pointer active:scale-95"
               >
                 <Activity className="h-3.5 w-3.5" />
-                <span>View Assessment</span>
+                <span className="hidden xs:inline">View Assessment</span>
+                <span className="xs:hidden">Assessment</span>
               </button>
             )}
 
             <button
               onClick={onResetChat}
-              className="rounded-lg p-1 text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 transition cursor-pointer"
+              className="rounded-lg p-1.5 text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 transition cursor-pointer active:scale-95"
               title="Reset conversation"
             >
               <RotateCcw className="h-3.5 w-3.5" />
@@ -149,41 +150,41 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
         </div>
 
         {/* Mini signals checklist */}
-        <div className="mt-2.5 grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[11px]">
+        <div className="mt-2 grid grid-cols-2 sm:grid-cols-4 gap-1 sm:gap-1.5 text-[10px] sm:text-[11px]">
           <div
-            className={`flex items-center gap-1.5 rounded-md px-2 py-1 ${
+            className={`flex items-center gap-1 rounded-md px-1.5 py-0.5 sm:px-2 sm:py-1 truncate ${
               hasConcern ? 'bg-teal-50 text-teal-800 font-medium' : 'bg-zinc-50 text-zinc-400'
             }`}
           >
-            <CheckCircle2 className={`h-3 w-3 ${hasConcern ? 'text-teal-600' : 'text-zinc-300'}`} />
-            <span>Chief Concern</span>
+            <CheckCircle2 className={`h-3 w-3 shrink-0 ${hasConcern ? 'text-teal-600' : 'text-zinc-300'}`} />
+            <span className="truncate">Chief Concern</span>
           </div>
 
           <div
-            className={`flex items-center gap-1.5 rounded-md px-2 py-1 ${
+            className={`flex items-center gap-1 rounded-md px-1.5 py-0.5 sm:px-2 sm:py-1 truncate ${
               hasTiming ? 'bg-teal-50 text-teal-800 font-medium' : 'bg-zinc-50 text-zinc-400'
             }`}
           >
-            <CheckCircle2 className={`h-3 w-3 ${hasTiming ? 'text-teal-600' : 'text-zinc-300'}`} />
-            <span>Timing / Duration</span>
+            <CheckCircle2 className={`h-3 w-3 shrink-0 ${hasTiming ? 'text-teal-600' : 'text-zinc-300'}`} />
+            <span className="truncate">Timing/Duration</span>
           </div>
 
           <div
-            className={`flex items-center gap-1.5 rounded-md px-2 py-1 ${
+            className={`flex items-center gap-1 rounded-md px-1.5 py-0.5 sm:px-2 sm:py-1 truncate ${
               hasSeverity ? 'bg-teal-50 text-teal-800 font-medium' : 'bg-zinc-50 text-zinc-400'
             }`}
           >
-            <CheckCircle2 className={`h-3 w-3 ${hasSeverity ? 'text-teal-600' : 'text-zinc-300'}`} />
-            <span>Severity (1-10)</span>
+            <CheckCircle2 className={`h-3 w-3 shrink-0 ${hasSeverity ? 'text-teal-600' : 'text-zinc-300'}`} />
+            <span className="truncate">Severity (1-10)</span>
           </div>
 
           <div
-            className={`flex items-center gap-1.5 rounded-md px-2 py-1 ${
+            className={`flex items-center gap-1 rounded-md px-1.5 py-0.5 sm:px-2 sm:py-1 truncate ${
               hasTriggers ? 'bg-teal-50 text-teal-800 font-medium' : 'bg-zinc-50 text-zinc-400'
             }`}
           >
-            <CheckCircle2 className={`h-3 w-3 ${hasTriggers ? 'text-teal-600' : 'text-zinc-300'}`} />
-            <span>Triggers / Context</span>
+            <CheckCircle2 className={`h-3 w-3 shrink-0 ${hasTriggers ? 'text-teal-600' : 'text-zinc-300'}`} />
+            <span className="truncate">Context/Triggers</span>
           </div>
         </div>
       </div>
@@ -286,8 +287,8 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
       {/* Suggested Quick Replies */}
       {quickReplies.length > 0 && !isLoading && (
-        <div className="mt-2 flex flex-wrap items-center gap-1.5 py-1">
-          <span className="text-[10px] uppercase font-bold text-zinc-400 mr-1">Suggested:</span>
+        <div className="mt-1.5 flex items-center gap-1.5 py-1 overflow-x-auto no-scrollbar scrollbar-none flex-nowrap sm:flex-wrap">
+          <span className="text-[10px] uppercase font-bold text-zinc-400 mr-1 shrink-0">Suggested:</span>
           {quickReplies.map((reply, idx) => (
             <button
               key={idx}
@@ -300,7 +301,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                   handleSendMessage(reply);
                 }
               }}
-              className="rounded-full bg-white border border-zinc-200 px-2.5 py-1 text-xs text-zinc-700 hover:border-teal-400 hover:bg-teal-50/50 hover:text-teal-800 transition cursor-pointer active:scale-95 shadow-2xs font-medium"
+              className="rounded-full bg-white border border-zinc-200 px-3 py-1.5 text-xs text-zinc-700 hover:border-teal-400 hover:bg-teal-50/50 hover:text-teal-800 transition cursor-pointer active:scale-95 shadow-2xs font-medium whitespace-nowrap shrink-0"
             >
               {reply}
             </button>
@@ -309,18 +310,18 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
       )}
 
       {/* Input Composer Box */}
-      <div className="mt-2 rounded-2xl border border-zinc-300 bg-white p-2.5 shadow-md focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/20">
+      <div className="mt-1.5 rounded-2xl border border-zinc-300 bg-white p-2 sm:p-2.5 shadow-md focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/20">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSendMessage();
           }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-1.5 sm:gap-2"
         >
           <button
             type="button"
             onClick={onOpenUpload}
-            className="rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-teal-600 transition cursor-pointer"
+            className="flex h-9 w-9 items-center justify-center rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 hover:text-teal-600 transition cursor-pointer active:scale-95 shrink-0"
             title="Attach PDF or prescription image"
           >
             <Paperclip className="h-4 w-4" />
@@ -329,7 +330,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
           <button
             type="button"
             onClick={onOpenVoice}
-            className="rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-teal-600 transition cursor-pointer"
+            className="flex h-9 w-9 items-center justify-center rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 hover:text-teal-600 transition cursor-pointer active:scale-95 shrink-0"
             title="Live voice mode"
           >
             <Mic className="h-4 w-4" />
@@ -339,16 +340,16 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            placeholder="Type your response or describe what you feel..."
-            className="flex-1 bg-transparent text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-hidden"
+            placeholder="Type your response..."
+            className="flex-1 min-w-0 bg-transparent text-base sm:text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-hidden px-1"
           />
 
           <button
             type="submit"
             disabled={!inputText.trim() || isLoading}
-            className="flex h-8 w-8 items-center justify-center rounded-xl bg-teal-600 text-white shadow-2xs hover:bg-teal-700 disabled:opacity-40 disabled:cursor-not-allowed transition active:scale-95 cursor-pointer"
+            className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal-600 text-white shadow-2xs hover:bg-teal-700 disabled:opacity-40 disabled:cursor-not-allowed transition active:scale-95 cursor-pointer shrink-0"
           >
-            <Send className="h-3.5 w-3.5" />
+            <Send className="h-4 w-4" />
           </button>
         </form>
       </div>

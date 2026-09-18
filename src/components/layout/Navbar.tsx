@@ -49,26 +49,26 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-zinc-200 bg-white/95 backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 gap-4">
+      <div className="mx-auto flex h-16 lg:h-20 max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8 gap-2 sm:gap-4">
         {/* Zone 1: Brand Logo & Tagline */}
-        <div className="flex items-center shrink-0 min-w-[200px]">
+        <div className="flex items-center shrink-0 min-w-0">
           <button
             onClick={() => setActiveTab('home')}
-            className="flex items-center gap-3 text-left transition-opacity hover:opacity-90 cursor-pointer"
+            className="flex items-center gap-2 sm:gap-3 text-left transition-opacity hover:opacity-90 cursor-pointer"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-900 shadow-xs shrink-0">
-              <div className="grid grid-cols-2 gap-1">
-                <div className="h-2 w-2 rounded-xs bg-teal-400" />
-                <div className="h-2 w-2 rounded-xs bg-teal-200" />
-                <div className="h-2 w-2 rounded-xs bg-teal-600" />
-                <div className="h-2 w-2 rounded-xs bg-emerald-400" />
+            <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-zinc-900 shadow-xs shrink-0">
+              <div className="grid grid-cols-2 gap-0.5 sm:gap-1">
+                <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-xs bg-teal-400" />
+                <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-xs bg-teal-200" />
+                <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-xs bg-teal-600" />
+                <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-xs bg-emerald-400" />
               </div>
             </div>
             <div className="flex flex-col justify-center">
-              <span className="font-bold tracking-tight text-zinc-900 text-base sm:text-lg font-['Space_Grotesk'] leading-tight">
-                PIXEL<br />PIONEERS
+              <span className="font-bold tracking-tight text-zinc-900 text-sm sm:text-lg font-['Space_Grotesk'] leading-tight">
+                PIXEL PIONEERS
               </span>
-              <p className="text-[11px] text-zinc-500 whitespace-nowrap tracking-tight mt-0.5 leading-none">
+              <p className="text-[10px] sm:text-[11px] text-zinc-500 whitespace-nowrap tracking-tight leading-none mt-0.5 hidden xs:block">
                 Intake &bull; Triage &bull; Clinic Coordination
               </p>
             </div>
@@ -134,13 +134,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Mobile / Tablet Controls (under lg breakpoint) */}
-        <div className="flex items-center gap-2 lg:hidden">
-          <div className="flex items-center gap-1 rounded-md border border-zinc-200 bg-zinc-50 px-2 py-1 text-xs text-zinc-800">
-            <MapPin className="h-3 w-3 text-teal-600 shrink-0" />
+        <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+          <div className="flex items-center gap-1 rounded-lg border border-zinc-200 bg-zinc-50 px-2 py-1.5 text-xs text-zinc-800 min-h-[36px]">
+            <MapPin className="h-3.5 w-3.5 text-teal-600 shrink-0" />
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value as MetroCity)}
-              className="bg-transparent font-medium text-zinc-800 focus:outline-hidden cursor-pointer text-xs"
+              className="bg-transparent font-semibold text-zinc-800 focus:outline-hidden cursor-pointer text-xs"
             >
               {METRO_CITIES.map((city) => (
                 <option key={city} value={city}>
@@ -152,16 +152,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={() => setActiveTab('chat')}
-            className="inline-flex items-center gap-1 rounded-md bg-teal-600 px-2.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-teal-700"
+            className="inline-flex items-center gap-1 rounded-lg bg-teal-600 px-2.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-teal-700 min-h-[36px] active:scale-95 transition cursor-pointer"
           >
-            <Sparkles className="h-3 w-3 text-teal-200" />
+            <Sparkles className="h-3 w-3 text-teal-200 shrink-0" />
             <span className="whitespace-nowrap">Intake</span>
           </button>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
-            className="rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition cursor-pointer"
+            className="rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition min-h-[36px] min-w-[36px] flex items-center justify-center cursor-pointer active:scale-95"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>

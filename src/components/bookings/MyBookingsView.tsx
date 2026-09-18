@@ -105,15 +105,15 @@ export const MyBookingsView: React.FC<MyBookingsViewProps> = ({ onStartNewBookin
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+    <div className="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-zinc-200 pb-4 sm:pb-5">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
             <CalendarCheck className="h-4 w-4" />
             <span>Consultation Management</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk'] mt-1">
+          <h1 className="text-xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk'] mt-1">
             My Appointments
           </h1>
           <p className="text-xs text-zinc-500 mt-1">
@@ -123,17 +123,17 @@ export const MyBookingsView: React.FC<MyBookingsViewProps> = ({ onStartNewBookin
 
         <button
           onClick={onStartNewBooking}
-          className="rounded-xl bg-teal-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-teal-700 transition cursor-pointer"
+          className="rounded-xl bg-teal-600 px-4 py-2.5 sm:py-2 text-xs font-bold text-white shadow-xs hover:bg-teal-700 transition cursor-pointer self-start sm:self-auto active:scale-95"
         >
           + Book New Consultation
         </button>
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-zinc-200 pb-2">
+      <div className="flex items-center gap-2 border-b border-zinc-200 pb-2 overflow-x-auto no-scrollbar scrollbar-none">
         <button
           onClick={() => setActiveTab('upcoming')}
-          className={`rounded-lg px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer ${
+          className={`rounded-xl px-3.5 py-2 text-xs font-semibold transition cursor-pointer whitespace-nowrap active:scale-95 ${
             activeTab === 'upcoming'
               ? 'bg-zinc-900 text-white'
               : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
@@ -144,7 +144,7 @@ export const MyBookingsView: React.FC<MyBookingsViewProps> = ({ onStartNewBookin
 
         <button
           onClick={() => setActiveTab('completed')}
-          className={`rounded-lg px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer ${
+          className={`rounded-xl px-3.5 py-2 text-xs font-semibold transition cursor-pointer whitespace-nowrap active:scale-95 ${
             activeTab === 'completed'
               ? 'bg-zinc-900 text-white'
               : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
@@ -155,7 +155,7 @@ export const MyBookingsView: React.FC<MyBookingsViewProps> = ({ onStartNewBookin
 
         <button
           onClick={() => setActiveTab('cancelled')}
-          className={`rounded-lg px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer ${
+          className={`rounded-xl px-3.5 py-2 text-xs font-semibold transition cursor-pointer whitespace-nowrap active:scale-95 ${
             activeTab === 'cancelled'
               ? 'bg-zinc-900 text-white'
               : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
@@ -326,8 +326,8 @@ export const MyBookingsView: React.FC<MyBookingsViewProps> = ({ onStartNewBookin
 
       {/* RESCHEDULE MODAL */}
       {reschedulingAppt && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/70 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl border border-zinc-200">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-zinc-950/70 backdrop-blur-xs p-0 sm:p-4 overflow-y-auto">
+          <div className="relative w-full max-w-md rounded-t-2xl sm:rounded-2xl bg-white p-4 sm:p-6 shadow-2xl border border-zinc-200 max-h-[92dvh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
               <h3 className="text-base font-bold text-zinc-900 font-['Space_Grotesk']">
                 Reschedule Appointment
@@ -469,8 +469,8 @@ export const MyBookingsView: React.FC<MyBookingsViewProps> = ({ onStartNewBookin
 
       {/* CANCEL MODAL */}
       {cancellingAppt && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/70 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl border border-zinc-200">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-zinc-950/70 backdrop-blur-xs p-0 sm:p-4 overflow-y-auto">
+          <div className="relative w-full max-w-md rounded-t-2xl sm:rounded-2xl bg-white p-4 sm:p-6 shadow-2xl border border-zinc-200 max-h-[92dvh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
               <h3 className="text-base font-bold text-zinc-900 font-['Space_Grotesk'] text-rose-600">
                 Cancel Consultation

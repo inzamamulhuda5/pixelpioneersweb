@@ -393,26 +393,26 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/70 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
-      <div className="relative w-full max-w-2xl rounded-2xl bg-white p-5 sm:p-6 shadow-2xl border border-zinc-200 my-8">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-zinc-950/70 backdrop-blur-xs p-0 sm:p-4 overflow-y-auto">
+      <div className="relative w-full max-w-2xl rounded-t-2xl sm:rounded-2xl bg-white p-4 sm:p-6 shadow-2xl border border-zinc-200 my-0 sm:my-8 max-h-[92dvh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-zinc-100 pb-4">
+        <div className="flex items-center justify-between border-b border-zinc-100 pb-3 sm:pb-4">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal-600 text-white shadow-2xs">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal-600 text-white shadow-2xs shrink-0">
               <Calendar className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-zinc-900 font-['Space_Grotesk']">
+              <h2 className="text-base sm:text-lg font-bold text-zinc-900 font-['Space_Grotesk']">
                 Schedule Doctor Consultation
               </h2>
-              <p className="text-xs text-zinc-500">
+              <p className="text-[11px] sm:text-xs text-zinc-500">
                 Clinic Desk Synchronization &bull; Real-Time Slot Holding
               </p>
             </div>
           </div>
           <button
             onClick={handleClose}
-            className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 transition"
+            className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 transition cursor-pointer"
           >
             <X className="h-5 w-5" />
           </button>
@@ -697,7 +697,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   value={patientName}
                   onChange={(e) => setPatientName(e.target.value)}
                   placeholder="e.g. Ramesh Chandra Sharma"
-                  className="w-full rounded-lg border border-zinc-200 px-3 py-2 text-xs text-zinc-900 focus:border-teal-500 focus:outline-hidden"
+                  className="w-full rounded-xl border border-zinc-200 px-3 py-2.5 sm:py-2 text-base sm:text-xs text-zinc-900 focus:border-teal-500 focus:outline-hidden"
                 />
                 {formErrors.name && <p className="text-[10px] text-rose-600 mt-0.5">{formErrors.name}</p>}
               </div>
@@ -711,7 +711,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   value={patientPhone}
                   onChange={(e) => setPatientPhone(e.target.value)}
                   placeholder="e.g. 9830123456"
-                  className="w-full rounded-lg border border-zinc-200 px-3 py-2 text-xs text-zinc-900 focus:border-teal-500 focus:outline-hidden"
+                  className="w-full rounded-xl border border-zinc-200 px-3 py-2.5 sm:py-2 text-base sm:text-xs text-zinc-900 focus:border-teal-500 focus:outline-hidden"
                 />
                 {formErrors.phone && (
                   <p className="text-[10px] text-rose-600 mt-0.5">{formErrors.phone}</p>
@@ -725,7 +725,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   value={patientEmail}
                   onChange={(e) => setPatientEmail(e.target.value)}
                   placeholder="e.g. ramesh.sharma@example.com"
-                  className="w-full rounded-lg border border-zinc-200 px-3 py-2 text-xs text-zinc-900 focus:border-teal-500 focus:outline-hidden"
+                  className="w-full rounded-xl border border-zinc-200 px-3 py-2.5 sm:py-2 text-base sm:text-xs text-zinc-900 focus:border-teal-500 focus:outline-hidden"
                 />
                 {formErrors.email && (
                   <p className="text-[10px] text-rose-600 mt-0.5">{formErrors.email}</p>
@@ -740,7 +740,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   onChange={(e) => setPatientAge(e.target.value)}
                   min={1}
                   max={120}
-                  className="w-full rounded-lg border border-zinc-200 px-3 py-2 text-xs text-zinc-900 focus:border-teal-500 focus:outline-hidden"
+                  className="w-full rounded-xl border border-zinc-200 px-3 py-2.5 sm:py-2 text-base sm:text-xs text-zinc-900 focus:border-teal-500 focus:outline-hidden"
                 />
                 {formErrors.age && <p className="text-[10px] text-rose-600 mt-0.5">{formErrors.age}</p>}
               </div>
@@ -755,16 +755,16 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 value={concern}
                 onChange={(e) => setConcern(e.target.value)}
                 placeholder="Describe your symptoms, duration, or key concerns..."
-                className="w-full rounded-lg border border-zinc-200 px-3 py-2 text-xs text-zinc-900 focus:border-teal-500 focus:outline-hidden leading-relaxed"
+                className="w-full rounded-xl border border-zinc-200 px-3 py-2.5 sm:py-2 text-base sm:text-xs text-zinc-900 focus:border-teal-500 focus:outline-hidden leading-relaxed"
               />
             </div>
 
             {/* Step 2 Footer Actions */}
-            <div className="mt-5 flex items-center justify-between border-t border-zinc-100 pt-3.5">
+            <div className="mt-5 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 border-t border-zinc-100 pt-3.5">
               <button
                 type="button"
                 onClick={() => setCurrentStep('slots')}
-                className="flex items-center gap-1.5 rounded-lg border border-zinc-200 px-3.5 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 transition cursor-pointer"
+                className="flex items-center justify-center gap-1.5 rounded-xl border border-zinc-200 px-3.5 py-2.5 sm:py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 transition cursor-pointer"
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
                 <span>Change Time Slot</span>
@@ -773,9 +773,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <button
                 type="button"
                 onClick={handleProceedToReview}
-                className="flex items-center gap-1.5 rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white shadow-xs hover:bg-teal-700 transition cursor-pointer active:scale-98"
+                className="flex items-center justify-center gap-1.5 rounded-xl bg-teal-600 px-5 py-2.5 sm:py-2 text-xs font-bold text-white shadow-xs hover:bg-teal-700 transition active:scale-98 cursor-pointer"
               >
-                <span>Continue to Review & Pricing</span>
+                <span>Proceed to Pricing & Review</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </div>
@@ -887,11 +887,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             </div>
 
             {/* Step 3 Footer Actions */}
-            <div className="mt-5 flex items-center justify-between border-t border-zinc-100 pt-3.5">
+            <div className="mt-5 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 border-t border-zinc-100 pt-3.5">
               <button
                 type="button"
                 onClick={() => setCurrentStep('patient')}
-                className="flex items-center gap-1.5 rounded-lg border border-zinc-200 px-3.5 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 transition cursor-pointer"
+                className="flex items-center justify-center gap-1.5 rounded-xl border border-zinc-200 px-3.5 py-2.5 sm:py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 transition cursor-pointer"
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
                 <span>Back to Patient Details</span>
@@ -901,7 +901,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 type="button"
                 disabled={isSubmitting || !selectedSlot || secondsRemaining <= 0}
                 onClick={handleConfirmBooking}
-                className="flex items-center gap-1.5 rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white shadow-xs hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition active:scale-98 cursor-pointer"
+                className="flex items-center justify-center gap-1.5 rounded-xl bg-teal-600 px-5 py-2.5 sm:py-2 text-xs font-bold text-white shadow-xs hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition active:scale-98 cursor-pointer"
               >
                 <Lock className="h-3.5 w-3.5" />
                 <span>{isSubmitting ? 'Confirming with Clinic...' : 'Confirm Booking'}</span>

@@ -72,15 +72,15 @@ export const ClinicDiscoveryView: React.FC<ClinicDiscoveryViewProps> = ({
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6">
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-zinc-200 pb-4 sm:pb-5">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
             <Building2 className="h-4 w-4" />
             <span>Healthcare Facility Network</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk'] mt-1">
+          <h1 className="text-xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk'] mt-1">
             Discover Verified Clinics in {selectedCity}
           </h1>
           <p className="text-xs text-zinc-500 mt-1">
@@ -89,8 +89,8 @@ export const ClinicDiscoveryView: React.FC<ClinicDiscoveryViewProps> = ({
         </div>
 
         {/* City Switcher */}
-        <div className="flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-3 py-2 shadow-2xs">
-          <MapPin className="h-4 w-4 text-teal-600" />
+        <div className="flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-3 py-2 shadow-2xs self-start sm:self-auto min-h-[38px]">
+          <MapPin className="h-4 w-4 text-teal-600 shrink-0" />
           <span className="text-xs font-bold text-zinc-700">City:</span>
           <select
             value={selectedCity}
@@ -109,22 +109,22 @@ export const ClinicDiscoveryView: React.FC<ClinicDiscoveryViewProps> = ({
       {/* Search & Filter Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         {/* Search bar */}
-        <div className="relative flex-1 max-w-md">
+        <div className="relative flex-1 max-w-md w-full">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search by clinic name, locality (e.g. Salt Lake, Koramangala)..."
-            className="w-full rounded-xl border border-zinc-200 bg-white pl-10 pr-4 py-2 text-xs sm:text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 focus:outline-hidden shadow-2xs"
+            placeholder="Search by clinic name, locality..."
+            className="w-full rounded-xl border border-zinc-200 bg-white pl-10 pr-4 py-2.5 sm:py-2 text-base sm:text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 focus:outline-hidden shadow-2xs"
           />
         </div>
 
         {/* Specialty Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 overflow-x-auto pb-1">
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scrollbar-none flex-nowrap sm:flex-wrap pb-1 w-full sm:w-auto">
           <button
             onClick={() => setSelectedSpecialty('All')}
-            className={`rounded-full px-3 py-1 text-xs font-semibold transition cursor-pointer ${
+            className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer whitespace-nowrap shrink-0 active:scale-95 ${
               selectedSpecialty === 'All'
                 ? 'bg-zinc-900 text-white'
                 : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
@@ -138,7 +138,7 @@ export const ClinicDiscoveryView: React.FC<ClinicDiscoveryViewProps> = ({
               <button
                 key={spec}
                 onClick={() => setSelectedSpecialty(spec)}
-                className={`rounded-full px-3 py-1 text-xs font-semibold transition cursor-pointer ${
+                className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition cursor-pointer whitespace-nowrap shrink-0 active:scale-95 ${
                   isMatch
                     ? 'bg-teal-600 text-white'
                     : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'

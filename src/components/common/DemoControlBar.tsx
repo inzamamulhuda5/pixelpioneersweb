@@ -26,14 +26,15 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
 
   return (
     <div className="w-full bg-zinc-900 text-white border-b border-zinc-800 text-xs">
-      <div className="mx-auto max-w-7xl px-4 py-2.5 sm:px-6 lg:px-8 flex flex-wrap lg:flex-nowrap items-center justify-between gap-y-2.5 gap-x-4">
+      {/* Desktop & Tablet Layout (sm and up) */}
+      <div className="hidden sm:flex mx-auto max-w-7xl px-4 py-2.5 sm:px-6 lg:px-8 flex-wrap lg:flex-nowrap items-center justify-between gap-y-2.5 gap-x-4">
         {/* Badge & Notice */}
         <div className="flex items-center gap-2.5 shrink-0">
           <span className="inline-flex items-center gap-1.5 rounded-md bg-teal-500/20 px-2.5 py-1 font-mono text-[10px] font-bold tracking-wide text-teal-300 ring-1 ring-teal-500/30 whitespace-nowrap">
             <span className="h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse shrink-0" />
             DEMO ENVIRONMENT
           </span>
-          <span className="text-zinc-400 text-xs hidden sm:inline whitespace-nowrap">
+          <span className="text-zinc-400 text-xs whitespace-nowrap">
             Fictional clinical scenarios for rapid evaluation & testing.
           </span>
         </div>
@@ -59,7 +60,7 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
             );
           })}
 
-          <div className="h-4 w-px bg-zinc-700 mx-1 hidden sm:block shrink-0" />
+          <div className="h-4 w-px bg-zinc-700 mx-1 shrink-0" />
 
           {/* Test Slot Double-Booking Contention */}
           <button
@@ -88,6 +89,56 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
           >
             <RefreshCw className="h-3 w-3 text-zinc-400 shrink-0" />
             <span>Reset Demo</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Android Layout (<sm): Compact edge-to-edge scrollable rail */}
+      <div className="sm:hidden px-3 py-2 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar scrollbar-none">
+        <div className="flex items-center gap-1.5 shrink-0">
+          <span className="inline-flex items-center gap-1 rounded bg-teal-500/20 px-2 py-0.5 font-mono text-[9px] font-bold text-teal-300 ring-1 ring-teal-500/30 whitespace-nowrap">
+            <span className="h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse shrink-0" />
+            DEMO
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1.5 shrink-0">
+          {DEMO_SCENARIOS.map((scenario) => {
+            const isActive = activeScenarioId === scenario.id;
+            return (
+              <button
+                key={scenario.id}
+                onClick={() => onLoadScenario(scenario)}
+                className={`inline-flex items-center gap-1 rounded-md px-2 py-1 min-h-[32px] text-[11px] font-semibold whitespace-nowrap transition active:scale-95 shrink-0 ${
+                  isActive
+                    ? 'bg-teal-500 text-zinc-950 font-bold'
+                    : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700'
+                }`}
+              >
+                <Sparkles className="h-2.5 w-2.5 text-teal-400 shrink-0" />
+                <span>{scenario.name.split(':')[0]}</span>
+              </button>
+            );
+          })}
+
+          <button
+            onClick={handleConflict}
+            className="inline-flex items-center gap-1 rounded-md bg-zinc-800 px-2 py-1 min-h-[32px] text-[11px] text-amber-300 hover:bg-zinc-700 transition active:scale-95 shrink-0 whitespace-nowrap"
+          >
+            {conflictSimulated ? (
+              <CheckCircle2 className="h-3 w-3 text-emerald-400 shrink-0" />
+            ) : (
+              <ShieldAlert className="h-3 w-3 text-amber-400 shrink-0" />
+            )}
+            <span>Contention</span>
+          </button>
+
+          <button
+            onClick={onResetDemo}
+            className="inline-flex items-center gap-1 rounded-md bg-zinc-800 px-2 py-1 min-h-[32px] text-[11px] text-zinc-300 hover:bg-zinc-700 transition active:scale-95 shrink-0 whitespace-nowrap"
+          >
+            <RefreshCw className="h-3 w-3 text-zinc-400 shrink-0" />
+            <span>Reset</span>
           </button>
         </div>
       </div>

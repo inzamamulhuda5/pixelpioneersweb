@@ -93,11 +93,11 @@ export const PatientAssessmentView: React.FC<PatientAssessmentViewProps> = ({
   });
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+    <div className="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
       {/* Prominent Medical Safety Boundary Banner */}
-      <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-xs text-zinc-600 flex items-start gap-3 shadow-2xs">
+      <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-3 sm:p-4 text-xs text-zinc-600 flex items-start gap-2.5 sm:gap-3 shadow-2xs">
         <Shield className="h-4 w-4 text-teal-600 shrink-0 mt-0.5" />
-        <div className="leading-relaxed">
+        <div className="leading-relaxed text-[11px] sm:text-xs">
           <span className="font-bold text-zinc-800">Important Medical Safety Boundary: </span>
           Pixel Pioneers is an AI patient-intake, information organization, and triage coordination system. It is
           <strong> not a licensed medical practitioner</strong> and does not provide a definitive diagnosis or
@@ -107,26 +107,26 @@ export const PatientAssessmentView: React.FC<PatientAssessmentViewProps> = ({
 
       {/* EMERGENCY ADVISORY if Urgent */}
       {triage.isEmergency && (
-        <div className="rounded-2xl border-2 border-rose-500 bg-rose-50 p-5 text-rose-950 shadow-md">
+        <div className="rounded-2xl border-2 border-rose-500 bg-rose-50 p-4 sm:p-5 text-rose-950 shadow-md">
           <div className="flex items-start gap-3">
             <AlertOctagon className="h-6 w-6 text-rose-600 shrink-0 mt-0.5 animate-pulse" />
             <div className="space-y-2">
-              <h2 className="text-base font-bold text-rose-900 font-['Space_Grotesk']">
+              <h2 className="text-sm sm:text-base font-bold text-rose-900 font-['Space_Grotesk']">
                 URGENT MEDICAL ATTENTION RECOMMENDED
               </h2>
               <p className="text-xs sm:text-sm text-rose-800 leading-relaxed">
                 {triage.emergencyGuidance ||
                   'Based on the reported symptoms (including acute chest pressure or potential anginal features), immediate emergency medical evaluation is strongly recommended.'}
               </p>
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 pt-2">
                 <a
                   href="tel:102"
-                  className="inline-flex items-center gap-2 rounded-lg bg-rose-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-rose-700 transition"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-rose-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-rose-700 transition active:scale-95"
                 >
                   <PhoneCall className="h-3.5 w-3.5" />
-                  <span>Call Emergency Ambulance (102 / 112)</span>
+                  <span>Call Emergency (102 / 112)</span>
                 </a>
-                <span className="text-xs text-rose-700">
+                <span className="text-[11px] text-rose-700">
                   Appointment booking below is available for non-critical coordination, but do not delay urgent care.
                 </span>
               </div>
@@ -136,43 +136,43 @@ export const PatientAssessmentView: React.FC<PatientAssessmentViewProps> = ({
       )}
 
       {/* Main Header / Top Action Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 pb-4 sm:pb-5">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
             <Activity className="h-4 w-4" />
             <span>Clinical Intake Assessment</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk'] mt-1">
+          <h1 className="text-xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk'] mt-1">
             Patient Assessment Overview
           </h1>
           <p className="text-xs text-zinc-500 mt-1">
             Generated on {new Date(assessment.createdAt).toLocaleDateString()} at{' '}
             {new Date(assessment.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} &bull;
-            Reference: {assessment.id}
+            Ref: {assessment.id}
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
           <button
             onClick={onAttachMoreDocuments}
-            className="flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3.5 py-2 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 transition shadow-2xs cursor-pointer"
+            className="flex items-center justify-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3.5 py-2.5 sm:py-2 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 transition shadow-2xs cursor-pointer active:scale-95"
           >
-            <Paperclip className="h-3.5 w-3.5 text-teal-600" />
+            <Paperclip className="h-3.5 w-3.5 text-teal-600 shrink-0" />
             <span>Attach Prescription / Report</span>
           </button>
 
           <button
             onClick={() => onProceedToClinics(recommendedSpecialty)}
-            className="flex items-center gap-1.5 rounded-xl bg-teal-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-teal-700 transition active:scale-98 cursor-pointer"
+            className="flex items-center justify-center gap-1.5 rounded-xl bg-teal-600 px-4 py-2.5 sm:py-2 text-xs font-bold text-white shadow-xs hover:bg-teal-700 transition active:scale-95 cursor-pointer"
           >
             <span>Find {recommendedSpecialty} Clinics</span>
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowRight className="h-3.5 w-3.5 shrink-0" />
           </button>
         </div>
       </div>
 
       {/* SECTION 1: Transparent Risk / Triage Component */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs">
+      <div className="rounded-2xl border border-zinc-200 bg-white p-4 sm:p-6 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-100 pb-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-zinc-500">

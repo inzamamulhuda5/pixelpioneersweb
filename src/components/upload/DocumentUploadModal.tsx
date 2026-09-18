@@ -143,21 +143,21 @@ export const DocumentUploadModal: React.FC<DocumentUploadModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/60 backdrop-blur-xs p-4 overflow-y-auto">
-      <div className="relative w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl border border-zinc-200 my-8">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-zinc-950/60 backdrop-blur-xs p-0 sm:p-4 overflow-y-auto">
+      <div className="relative w-full max-w-xl rounded-t-2xl sm:rounded-2xl bg-white p-4 sm:p-6 shadow-2xl border border-zinc-200 my-0 sm:my-8 max-h-[92dvh] overflow-y-auto">
         {/* Modal Header */}
-        <div className="flex items-center justify-between border-b border-zinc-100 pb-4">
+        <div className="flex items-center justify-between border-b border-zinc-100 pb-3 sm:pb-4">
           <div>
-            <h2 className="text-lg font-bold text-zinc-900 font-['Space_Grotesk']">
+            <h2 className="text-base sm:text-lg font-bold text-zinc-900 font-['Space_Grotesk']">
               Attach Prescription or Medical Report
             </h2>
-            <p className="text-xs text-zinc-500 mt-0.5">
+            <p className="text-[11px] sm:text-xs text-zinc-500 mt-0.5">
               Secure intake analysis &bull; Supports PDF, JPG, PNG up to 10MB
             </p>
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 transition"
+            className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 transition cursor-pointer"
           >
             <X className="h-5 w-5" />
           </button>
@@ -273,17 +273,17 @@ export const DocumentUploadModal: React.FC<DocumentUploadModalProps> = ({
         )}
 
         {/* Modal Action Buttons */}
-        <div className="mt-6 flex items-center justify-end gap-2.5 border-t border-zinc-100 pt-4">
+        <div className="mt-6 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 border-t border-zinc-100 pt-4">
           <button
             onClick={onClose}
-            className="rounded-lg px-4 py-2 text-xs font-semibold text-zinc-600 hover:bg-zinc-100 transition"
+            className="rounded-xl border border-zinc-200 sm:border-transparent px-4 py-2.5 sm:py-2 text-xs font-semibold text-zinc-600 hover:bg-zinc-100 transition cursor-pointer text-center"
           >
             Cancel
           </button>
           <button
             onClick={handleConfirmAttach}
             disabled={!extractedPreview || isProcessing}
-            className="flex items-center gap-1.5 rounded-lg bg-teal-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition active:scale-98"
+            className="flex items-center justify-center gap-1.5 rounded-xl bg-teal-600 px-4 py-2.5 sm:py-2 text-xs font-bold text-white shadow-xs hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition active:scale-98 cursor-pointer"
           >
             <span>Attach to Clinical Intake</span>
             <ArrowRight className="h-3.5 w-3.5" />

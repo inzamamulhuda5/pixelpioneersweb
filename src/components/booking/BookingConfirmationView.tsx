@@ -43,19 +43,19 @@ export const BookingConfirmationView: React.FC<BookingConfirmationViewProps> = (
   }, []);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+    <div className="max-w-3xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
       {/* Confirmation Card */}
-      <div className="rounded-3xl border border-zinc-200 bg-white p-6 sm:p-8 shadow-xl text-center">
+      <div className="rounded-2xl sm:rounded-3xl border border-zinc-200 bg-white p-4 sm:p-8 shadow-xl text-center">
         {/* Animated Check Icon */}
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-50 text-teal-600 ring-8 ring-teal-50/50 mb-4">
-          <CheckCircle2 className="h-10 w-10 text-teal-600" />
+        <div className="mx-auto flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-teal-50 text-teal-600 ring-8 ring-teal-50/50 mb-3 sm:mb-4">
+          <CheckCircle2 className="h-8 w-8 sm:h-10 sm:w-10 text-teal-600" />
         </div>
 
         <span className="inline-flex items-center gap-1 rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-800 uppercase tracking-wider">
           Appointment Confirmed
         </span>
 
-        <h1 className="mt-3 text-2xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk']">
+        <h1 className="mt-2.5 text-xl sm:text-3xl font-extrabold text-zinc-900 font-['Space_Grotesk']">
           Your Consultation is Reserved!
         </h1>
         <p className="mt-1 text-xs sm:text-sm text-zinc-500">
@@ -63,7 +63,7 @@ export const BookingConfirmationView: React.FC<BookingConfirmationViewProps> = (
         </p>
 
         {/* Appointment Details Box */}
-        <div className="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50/70 p-5 text-left text-xs space-y-4">
+        <div className="mt-5 rounded-2xl border border-zinc-200 bg-zinc-50/70 p-4 sm:p-5 text-left text-xs space-y-4">
           {/* Doctor & Clinic */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-200 pb-4">
             <div className="flex items-center gap-3">
@@ -130,10 +130,10 @@ export const BookingConfirmationView: React.FC<BookingConfirmationViewProps> = (
         </div>
 
         {/* Action Buttons: PDF Receipt & Calendar */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3">
           <button
             onClick={() => downloadAppointmentReceipt(appointment)}
-            className="flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2.5 text-xs font-bold text-white shadow-md hover:bg-teal-700 transition active:scale-98 cursor-pointer"
+            className="flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-4 py-3 sm:py-2.5 text-xs font-bold text-white shadow-md hover:bg-teal-700 transition active:scale-98 cursor-pointer"
           >
             <Download className="h-4 w-4" />
             <span>Download Receipt (PDF)</span>
@@ -141,7 +141,7 @@ export const BookingConfirmationView: React.FC<BookingConfirmationViewProps> = (
 
           <button
             onClick={() => downloadCalendarInvite(appointment)}
-            className="flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-4 py-2.5 text-xs font-bold text-zinc-800 shadow-2xs hover:bg-zinc-50 transition cursor-pointer"
+            className="flex items-center justify-center gap-2 rounded-xl border border-zinc-300 bg-white px-4 py-3 sm:py-2.5 text-xs font-bold text-zinc-800 shadow-2xs hover:bg-zinc-50 transition active:scale-98 cursor-pointer"
           >
             <CalendarCheck className="h-4 w-4 text-teal-600" />
             <span>Add to Calendar (.ics)</span>
@@ -149,7 +149,7 @@ export const BookingConfirmationView: React.FC<BookingConfirmationViewProps> = (
 
           <button
             onClick={onViewMyBookings}
-            className="flex items-center gap-2 rounded-xl bg-zinc-900 px-4 py-2.5 text-xs font-bold text-white shadow-md hover:bg-zinc-800 transition cursor-pointer"
+            className="flex items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-3 sm:py-2.5 text-xs font-bold text-white shadow-md hover:bg-zinc-800 transition active:scale-98 cursor-pointer"
           >
             <span>Go to My Bookings</span>
             <ArrowRight className="h-4 w-4" />

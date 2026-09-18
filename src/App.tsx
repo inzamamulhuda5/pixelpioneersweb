@@ -11,6 +11,7 @@ import {
   PatientIntakeState,
 } from './types';
 import { Navbar } from './components/layout/Navbar';
+import { MobileBottomNav } from './components/layout/MobileBottomNav';
 import { DemoControlBar } from './components/common/DemoControlBar';
 import { HeroChatComposer } from './components/home/HeroChatComposer';
 import { ChatInterface } from './components/chat/ChatInterface';
@@ -238,7 +239,7 @@ export default function App() {
       />
 
       {/* Main View Area */}
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col pb-16 lg:pb-0">
         {/* VIEW 1: HOME */}
         {activeTab === 'home' && (
           <HeroChatComposer
@@ -405,7 +406,7 @@ export default function App() {
       )}
 
       {/* Global Clinical & Prototype Footer */}
-      <footer className="border-t border-zinc-200 bg-white py-6 text-xs text-zinc-500">
+      <footer className="border-t border-zinc-200 bg-white py-6 mb-16 lg:mb-0 text-xs text-zinc-500">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
             <div className="flex items-center justify-center sm:justify-start gap-2">
@@ -425,6 +426,14 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Persistent Mobile Bottom Navigation Bar on Mobile / Android */}
+      <MobileBottomNav
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        hasActiveAssessment={Boolean(currentAssessment)}
+        upcomingBookingsCount={upcomingBookingsCount}
+      />
     </div>
   );
 }
